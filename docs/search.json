@@ -1,0 +1,9 @@
+[
+  {
+    "objectID": "01-conceptos.html#blanchard-quah-ortogonalización-restricciones-sobre-c1",
+    "href": "01-conceptos.html#blanchard-quah-ortogonalización-restricciones-sobre-c1",
+    "title": "2  Aplicación para Guatemala",
+    "section": "2.1 Blanchard-Quah ortogonalización (restricciones) sobre C(1)",
+    "text": "2.1 Blanchard-Quah ortogonalización (restricciones) sobre C(1)\nAl observar la evolución del crédito hacia consumo provisto por el sistema bancario guatemalteco y disponible en Secretaría Ejecutiva del Consejo Monetario Centroamericano (2023), se observa una series con una tendendencia estocástica.\n\n\nCode\nlibrary(\"zoo\")\nlibrary(\"xts\")\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(kableExtra)\nlibrary(xtable)\nlibrary(tidyr)\nlibrary(quantmod)\nlibrary(RColorBrewer)\nlibrary(gridExtra)\n#CARGAMOS DATOS MENSUALES\nDATA_MES&lt;-as.xts(read.zoo(\"GT_MES.csv\", index.column = 1,\n          sep = \";\", header=TRUE, format = \"%Y-%m-%d\"))\nCREDITO&lt;-DATA_MES$CRED\nCREDITO&lt;-data.frame(date=index(CREDITO), coredata(CREDITO))\nCREDITO&lt;-filter(CREDITO, date &gt;= \"2008-01-01\")\ncolnames(CREDITO)&lt;-c(\"date\",\"CREDITO\")\nCREDITO&lt;-mutate(CREDITO, CONSUMO=log(CREDITO))\nG&lt;-ggplot(CREDITO, aes(x=date, y=CONSUMO))\nG&lt;-G+labs(y=\"Logaritmo\",\n          x=\"Fecha\", title = \"Guatemala: evolución del crédito al consumo\",\n          caption = \"https://www.secmca.org/wp-content/uploads/2023/03/REPORTE_INDICADO\nRES_BANCARIOS_MARZO_2023.xlsx\")+\n  geom_line(size=1.5)\nG\n\n\n\n\n\n\n\n\n\nSecretaría Ejecutiva del Consejo Monetario Centroamericano. 2023. “INDICADORES BANCARIOS.” https://www.secmca.org/wp-content/uploads/2023/03/REPORTE_INDICADORES_BANCARIOS_MARZO_2023.xlsx."
+  }
+]

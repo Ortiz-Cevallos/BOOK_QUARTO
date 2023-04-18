@@ -1,0 +1,21 @@
+project:
+  type: book
+  output-dir: docs
+book:
+  title: "MODELOS SEMI ESTRUCTURALES PARA EL CRÉDITO AL CONSUMO"
+  author: "[Luis Ortiz-Cevallos](https://ortiz-cevallos.github.io/MYSELF/)"
+  favicon: Luis.png
+  sidebar: 
+    logo: Luis.png
+  language: custom.yml
+  downloads: [pdf, epub]
+  chapters:
+    - index.qmd
+    - 01-conceptos.qmd
+format:
+  html:
+    theme: journal
+    code-fold: true
+    include-after-body: graph_fold.html
+  pdf:
+    documentclass: scrreport

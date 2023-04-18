@@ -1,0 +1,55 @@
+---
+title: "Aplicación para Guatemala"
+author: "[Luis Ortiz-Cevallos](https://ortiz-cevallos.github.io/MYSELF/)"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+code_download: true
+code_folding: hide
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: true
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+library(reticulate)
+```
+
+
+## Blanchard-Quah ortogonalización (restricciones) sobre C(1)
+
+
+Al observar la evolución del crédito hacia consumo provisto por el sistema bancario guatemalteco y disponible en @SECMCADATOS, se observa una series con una tendendencia estocástica. 
+
+
+```{r message=FALSE, warning=FALSE}
+library("zoo")
+library("xts")
+library(dplyr)
+library(ggplot2)
+library(kableExtra)
+library(xtable)
+library(tidyr)
+library(quantmod)
+library(RColorBrewer)
+library(gridExtra)
+#CARGAMOS DATOS MENSUALES
+DATA_MES<-as.xts(read.zoo("GT_MES.csv", index.column = 1,
+          sep = ";", header=TRUE, format = "%Y-%m-%d"))
+CREDITO<-DATA_MES$CRED
+CREDITO<-data.frame(date=index(CREDITO), coredata(CREDITO))
+CREDITO<-filter(CREDITO, date >= "2008-01-01")
+colnames(CREDITO)<-c("date","CREDITO")
+CREDITO<-mutate(CREDITO, CONSUMO=log(CREDITO))
+G<-ggplot(CREDITO, aes(x=date, y=CONSUMO))
+G<-G+labs(y="Logaritmo",
+          x="Fecha", title = "Guatemala: evolución del crédito al consumo",
+          caption = "https://www.secmca.org/wp-content/uploads/2023/03/REPORTE_INDICADO
+RES_BANCARIOS_MARZO_2023.xlsx")+
+  geom_line(size=1.5)
+G
+```
