@@ -5,8 +5,6 @@ book:
   title: "MODELOS SEMI ESTRUCTURALES PARA EL CRÉDITO AL CONSUMO"
   author: "[Luis Ortiz-Cevallos](https://ortiz-cevallos.github.io/MYSELF/)"
   favicon: Luis.png
-  sidebar: 
-    logo: Luis.png
   language: custom.yml
   downloads: [pdf, epub]
   chapters:
