@@ -1,9 +1,303 @@
 [
   {
-    "objectID": "01-conceptos.html#blanchard-quah-ortogonalización-restricciones-sobre-c1",
-    "href": "01-conceptos.html#blanchard-quah-ortogonalización-restricciones-sobre-c1",
-    "title": "2  Aplicación para Guatemala",
-    "section": "2.1 Blanchard-Quah ortogonalización (restricciones) sobre C(1)",
-    "text": "2.1 Blanchard-Quah ortogonalización (restricciones) sobre C(1)\nAl observar la evolución del crédito hacia consumo provisto por el sistema bancario guatemalteco y disponible en Secretaría Ejecutiva del Consejo Monetario Centroamericano (2023), se observa una series con una tendendencia estocástica.\n\n\nCode\nlibrary(\"zoo\")\nlibrary(\"xts\")\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(kableExtra)\nlibrary(xtable)\nlibrary(tidyr)\nlibrary(quantmod)\nlibrary(RColorBrewer)\nlibrary(gridExtra)\n#CARGAMOS DATOS MENSUALES\nDATA_MES&lt;-as.xts(read.zoo(\"GT_MES.csv\", index.column = 1,\n          sep = \";\", header=TRUE, format = \"%Y-%m-%d\"))\nCREDITO&lt;-DATA_MES$CRED\nCREDITO&lt;-data.frame(date=index(CREDITO), coredata(CREDITO))\nCREDITO&lt;-filter(CREDITO, date &gt;= \"2008-01-01\")\ncolnames(CREDITO)&lt;-c(\"date\",\"CREDITO\")\nCREDITO&lt;-mutate(CREDITO, CONSUMO=log(CREDITO))\nG&lt;-ggplot(CREDITO, aes(x=date, y=CONSUMO))\nG&lt;-G+labs(y=\"Logaritmo\",\n          x=\"Fecha\", title = \"Guatemala: evolución del crédito al consumo\",\n          caption = \"https://www.secmca.org/wp-content/uploads/2023/03/REPORTE_INDICADO\nRES_BANCARIOS_MARZO_2023.xlsx\")+\n  geom_line(size=1.5)\nG\n\n\n\n\n\n\n\n\n\nSecretaría Ejecutiva del Consejo Monetario Centroamericano. 2023. “INDICADORES BANCARIOS.” https://www.secmca.org/wp-content/uploads/2023/03/REPORTE_INDICADORES_BANCARIOS_MARZO_2023.xlsx."
+    "objectID": "01-conceptos.html#limite-al-valor-de-garantia-ltv",
+    "href": "01-conceptos.html#limite-al-valor-de-garantia-ltv",
+    "title": "2  Colombia",
+    "section": "2.1 Limite al valor de garantia (LTV)",
+    "text": "2.1 Limite al valor de garantia (LTV)\n\nObjetivos:\n\nLimitar el apalancamiento de los hogares y prevenir el sobrendeudamiento.\nLimitar la exposición de los establecimientos de crédito a caidas en los precios de la vivienda.\n\n\nResponsable: La regulación es materia exclusiva del gobierno, aunque su control y aplicación del régimen sancionatorio es materia de la Superintendencia Financiera de Colombia (SFC).\n\nFuncionamiento: El monto del crédito podrá ser hasta del setenta por ciento (70%) del valor del inmueble. Dicho valor será el del precio de compra o el de un avalúo técnicamente practicado dentro de los seis (6) meses anteriores al otorgamiento del crédito. En los créditos destinados a financiar vivienda de interés social, el monto del préstamo podrá ser hasta del ochenta por ciento (80%) del valor del inmueble.\nSituación: En los últimos años el promedio de LTV es del 60% en VIS y 50% en No VIS, porcentajes que permiten que exista una brecha importante en el caso que se presente una caida en los precios de la vivienda. Aun cuando no existe una revisión formal de la regulación, desde su emisión Colombia no ha experimentado una crisis hipotecaria y la morosidad de ésta ha disminuido sustancialmente, asi como el apalancamiento de los hogares asociado a vivienda."
+  },
+  {
+    "objectID": "01-conceptos.html#limite-al-servicio-de-la-deuda-dti",
+    "href": "01-conceptos.html#limite-al-servicio-de-la-deuda-dti",
+    "title": "2  Colombia",
+    "section": "2.2 Limite al servicio de la deuda (DTI)",
+    "text": "2.2 Limite al servicio de la deuda (DTI)\n\nObjetivos: Limitar el apalancamiento de los hogares y prevenir el sobrendeudamiento.\nResponsable: La regulación es materia exclusiva del gobierno, aunque su control y aplicación del régimen sancionatorio es materia de la SFC.\nFuncionamiento: La primera cuota del crédito no podrá representar más del treinta por ciento (30%) de los ingresos familiares.\nSituación: Aun cuando no existe una revisión formal de la regulación, desde su emisión Colombia no ha experimentado una crisis hipotecaria y la morosidad de ésta ha disminuido sustancialmente, asi como el apalancamiento de los hogares asociado a vivienda."
+  },
+  {
+    "objectID": "01-conceptos.html#limites-a-las-operaciones-de-crédito-en-ml",
+    "href": "01-conceptos.html#limites-a-las-operaciones-de-crédito-en-ml",
+    "title": "2  Colombia",
+    "section": "2.3 Limites a las operaciones de crédito en ML",
+    "text": "2.3 Limites a las operaciones de crédito en ML\n\nObjetivos: El tope a la tasa de crecimiento del crédito se implementó en el mes de marzo de 1994. La razón para su implementación respondia al temor del Banco de la República en que el alto crecimiento del crédito (superior al 25% real anual en alguno meses de 1993), estuviera alimentando una burbuja hipotecaria. En esos momentos, los precios de la vivienda venian incrementándose rápidamente, además no existian limites al LTV - llegó a financiarse hasta el 90%.\nResponsable: La definición de las condiciones bajo las cuales se hace efectiva la ley es responsabilidad del BR y la SFC supervisa su cumplimiento.\nFuncionamiento: En situaciones excepcionales y por periodos que sumados en el año no excedan de ciento veinte (120) dias, se podrán imponer limites de crecimiento a la cartera y a las demás operaciones activas que realicen los establecimientos de crédito. Los establecimientos de crédito no podrán tener un crecimiento en el monto total de sus operaciones activas superior al 2,2% mensual con respecto a las cifras registradas en sus balance al 28 de febrero de 1994.\nSituación: La evidencia sobre la efectividad de la regulación parece apuntar a que ésta no fue muy efectiva. De hecho, en su Informe de la Junta Directiva al Congreso de la República de julio de 1994, el Banco de la República afirmo:\n\n“Frente al comportamiento registrado por la cartera, (…) la Junta Directiva no permaneció pasiva. En primer lugar, mediante su Resolución 6 de marzo 15 de 1994, fijó un tope máximo al crecimiento mensual de la cartera (…). Sin embargo, la efectividad del control de la cartera no fue la esperada, lo cual hizo necesario hacer efectivas decisiones que se tomaron paralelamente, tendientes a corregir los excesos de liquidez de la economía”"
+  },
+  {
+    "objectID": "01-conceptos.html#limites-de-concentración",
+    "href": "01-conceptos.html#limites-de-concentración",
+    "title": "2  Colombia",
+    "section": "2.4 Limites de concentración",
+    "text": "2.4 Limites de concentración\n\nObjetivos: Limitar el riesgo de concentración en los portafolios de crédito.\nResponsable: La regulación es materia exclusiva del gobierno, aunque su control y aplicación del régimen sancionatorio es materia de la SFC.\nFuncionamiento: Ningún establecimiento de crédito puede realizar con persona alguna, directa o indirectamente, operaciones activas de crédito que, conjunta o separadamente, superen el diez por ciento (10%) de su patrimonio técnico, (equivalente en Colombia del Tier 2 de Basilea III) si la única garantia de la operación es el patrimonio del deudor. Podrá ser hasta el 25% siempre y cuando las operaciones cuenten con garantias suficientes para amparar el riesgo que exceda del 5% de dicho patrimonio. Podrá ser hasta el 30% si son operaciones realizadas con instituciones financieras. Los establecimientos de crédito que tengan filiales en el exterior deberán consolidar con éstas sus operaciones de crédito individuales.\nSituación: No ha habido evaluaciones formales de esta medida."
+  },
+  {
+    "objectID": "01-conceptos.html#limites-a-los-descalces-cambiarios",
+    "href": "01-conceptos.html#limites-a-los-descalces-cambiarios",
+    "title": "2  Colombia",
+    "section": "2.5 Limites a los descalces cambiarios",
+    "text": "2.5 Limites a los descalces cambiarios\n\nObjetivos: Limitar el riesgo cambiario.\nResponsable: La implementación es materia exclusiva del BR, aunque su control y aplicación del régimen sancionatorio es materia de la SFC.\nFuncionamiento: Hay dos herramientas:\n1. Posición Propia (PP): La diferencia entre los derechos y las obligaciones denominados en ME. Limites de [-5%, 20%] del patrimonio técnico.\n2. Indicador de Riesgo Cambiario (IRC): Se calcula la PP en cada moneda. Todas las posiciones &gt; 0 se convierten a USD y se suman. Este es el IRC+. De manera análoga se construye el IRC-. Los limites son 40% del patrimonio técnico (IRC+) y -40% (IRC-). Se usan promedios de 3 dias en el cálculo de ambos indicadores (PP e IRC).\nSituación: No ha habido evaluaciones formales de esta medida, pero en Colombia el bajo nivel de descalces cambiarios de los intermediarios y de sus deudores, ha permitido que la tasa de cambio efectivamente actúe como un mitigador de choques externos."
+  },
+  {
+    "objectID": "01-conceptos.html#limites-a-los-créditos-en-me",
+    "href": "01-conceptos.html#limites-a-los-créditos-en-me",
+    "title": "2  Colombia",
+    "section": "2.6 Limites a los créditos en ME",
+    "text": "2.6 Limites a los créditos en ME\n\nObjetivos: Limitar el riesgo cambiario y de transformación de plazos.\nResponsable: La implementación es materia exclusiva del BR, aunque su control y aplicación del régimen sancionatorio es materia de la SFC.\nFuncionamiento: Fondos en ME pueden utilizarse para otorgar préstamos en la misma moneda y a un plazo igual o inferior. Pueden usarse para dar un crédito en COP solo si el crédito en ME está cubierto con derivados o con inversiones en subsidiarias en el exterior. El intermediario no puede tener créditos cubiertos en ME, que esté fondeando créditos en COP, por un saldo &gt; 20% del patrimonio técnico (si el crédito tiene madurez &lt; 1 año). No hay limite para aquellos créditos en ME con una madurez superior a 1 año. También pueden usar créditos en ME para crear coberturas sintéticas.\n\nNo se permite a los intermediarios captar en ME (salvo algunas excepciones).\n\nSituación: Aplica análisis de los limites a los descalces cambiarios."
+  },
+  {
+    "objectID": "01-conceptos.html#limites-al-apalancamiento",
+    "href": "01-conceptos.html#limites-al-apalancamiento",
+    "title": "2  Colombia",
+    "section": "2.7 Limites al apalancamiento",
+    "text": "2.7 Limites al apalancamiento\n\nObjetivos:\n\nLimitar la presión del mercado de derivados sobre la tasa de cambio.\nLimitar el riesgo en el mercado de derivados (limitando el apalancamiento).\n\n\nResponsable: La implementación es materia exclusiva del BR, aunque su control y aplicación del régimen sancionatorio es materia de la SFC.\nFuncionamiento: Hay dos instrumentos:\n\n\nPosición Bruta de Apalancamiento (PBA): El limite exige que el saldo nominal bruto (compras más ventas) de las operaciones sobre instrumentos en ME con cumplimiento igual o superior a un dia sea máximo 5.5 veces el valor del patrimonio técnico.\nPosición Propia de Contado (PPC): Se calcula partiendo de la PP y excluyendo algunos rubros del total de derechos y obligaciones en ME, como por ejemplo las inversiones en ME hasta el vencimiento o las posiciones en operaciones de derivados (derechos y obligaciones a futuro). Limites de [-20%, 50%] del patrimonio técnico. Se usan promedios de 3 dias en el cálculo de ambos indicadores (PBA y PPC).\n\n\nSituación: No se ha realizado una evaluación formal de estas medidas."
+  },
+  {
+    "objectID": "01-conceptos.html#controles-a-los-flujos-de-capital",
+    "href": "01-conceptos.html#controles-a-los-flujos-de-capital",
+    "title": "2  Colombia",
+    "section": "2.8 Controles a los flujos de capital",
+    "text": "2.8 Controles a los flujos de capital\n\nObjetivos:\n\nReducir la fragilidad financiera que pueden generar los descalces cambiarios.\nDesincentivar la entrada de flujos especulativos:\n\nQue acentúan las presiones sobre la tasa de cambio;\nQue puedan llevar a una sobrevaloración de los precios de los activos.\n\n\nResponsable: Existen tres herramientas principales: i) depósito al endeudamiento externo; ii) depósito a la inversión extranjera de portafolio y iii) control a la IED. La primera la implementa el BR, las otras dos el gobierno a través del Ministerio de Hacienda.\nFuncionamiento:\n\nDepósito al endeudamiento externo: Se requirió un depósito proporcional al monto del crédito. El depósito fluctuaba entre 10% y 93% del monto solicitado, mientras que el periodo de tenencia oscilaba entre 6 y 24 meses. La última vez que se impuso este depósito fue en mayo de 2007, cuando se estableció en 40% del valor del desembolso, con un término para su redención de 6 meses. Está inactivo desde octubre de 2008.\nDepósito a la inversión extranjera de portafolio:** En mayo de 2007 el Ministerio de Hacienda estableció un depósito a la inversión de portafolio en 40%. Posteriormente, en mayo de 2008 aumentó a 50%. En octubre de 2008 se eliminó este depósito.\n\n\nSe estableció un periodo minimo de permanencia de 2 años. Se eliminó en octubre de 2008.\n\nSituación: Dado que los controles generalmente son impuestos en conjunto con otras politicas adicionales, es dificil medir su efectividad. Sin embargo, se ha tratado de evaluar su alcance a la luz de los objetivos, considerando tanto los costos y los beneficios.\n\nSe han realizado ejercicios para determinar si los controles contribuyen a reducir los volúmenes totales de flujos moderando la apreciación de la moneda y/o si el efecto es un cambio en la composición de los mismos.\nLa evidencia empirica ha encontrado que los controles de capital no han tenido un efecto en el monto total de entrada de flujos y por lo tanto no han tenido un impacto significativo en términos cambiarios, aunque han sido efectivos en aumentar su madurez."
+  },
+  {
+    "objectID": "01-conceptos.html#indicador-de-riesgo-de-liquidez-irl",
+    "href": "01-conceptos.html#indicador-de-riesgo-de-liquidez-irl",
+    "title": "2  Colombia",
+    "section": "2.9 Indicador de Riesgo de Liquidez (IRL)",
+    "text": "2.9 Indicador de Riesgo de Liquidez (IRL)\n\nObjetivos: Limitar el riesgo de liquidez de fondeo.\n\nResponsable: SFC.\nFuncionamiento: El IRL se define de la siguiente manera:\n\n\\[\\begin{equation}\nIRL_R =  \\frac{ALM}{RNL}\n\\end{equation}\\]\nDonde ALM es el valor de los activos liquidos ajustado por liquidez, calculados para cada horizonte de tiempo, y RNL corresponde al requerimiento neto de liquidez que tuvo la entidad en cada periodo.\nLos activos liquidos corresponden a la suma del disponible y activos liquidos. Estos últimos se ajustan por un haircut de liquidez. Los activos en ME tienen un ajuste adicional por el riesgo cambiario que conllevan.\nLos requerimientos netos de liquidez se calculan como la suma de los flujos de egreso contractuales y netos no contractuales, menos el 75% del minimo entre los ingresos contractuales y la suma anteriormente descrita. Esto se hace para que las entidades no puedan compensar la totalidad sus necesidades con ingreso contractual.\nEl IRL se calcula para horizontes de 7, 15, 30 y 90 dias. Si los indicadores calculados para los horizontes de 7 y 30 dias son menores al 100%, la SFC exige a la entidad un plan de acción con el objetivo de fortalecer su posición de liquidez. Los demás plazos se utilizan con fines de seguimiento y monitoreo.\n\nSituación: La introducción del SARL en 2009 generó una disminución del grado de sustitución que manejaban las entidades entre inversiones y cartera, ya que obligó a las entidades a mantener una cantidad considerable de inversiones liquidas permanentemente. Desde las modificaciones a la regulación (diciembre de 2011), ninguna de las entidades ha presentado un indicador por debajo del minimo regulatorio."
+  },
+  {
+    "objectID": "01-conceptos.html#indicador-de-exposición-individual-y-consolidado",
+    "href": "01-conceptos.html#indicador-de-exposición-individual-y-consolidado",
+    "title": "2  Colombia",
+    "section": "2.10 Indicador de exposición individual y consolidado",
+    "text": "2.10 Indicador de exposición individual y consolidado\n\nObjetivos: Mitigar riesgo de liquidez de corto plazo en ME, a nivel individual y consolidado.\nResponsable: La implementación es materia exclusiva del BR, aunque su control y aplicación del régimen sancionatorio es materia de la SFC.\nFuncionamiento: El Indicador de Exposición Individual (IEI) es similar en sus componentes al IRL, y se define como la suma de los excedentes netos por moneda (i.e. la suma de aquells monedas para las que los activos liquidos exceden los requerimientos de liquidez), ajustados por un haircut, menos la suma del valor absoluto de las deficiencias netas por moneda. El indicador debe ser mayor a cero en los horizontes de 7 y 30 dias.\n\nEl Indicador de Exposición Consolidado (IEC) debe ser calculado solo por aquellas entidades obligadas a presentar balances consolidados a la SFC. La idea es que la holding tenga sufieciente liquidez (luego de aplicar los haircuts relevantes) para apoyar cualquier deficiencia de liquidez en una subsidiaria.\nPor tanto, se calcula un IEI para cada pais en que opera una subsidiaria (y considerando las subsidirias en Colombia como una jurisdicción independiente). El IEC se define entonces com la suma del IEI de la holding y el IEI de aquellos paises que reportan deficiencias. El idicador se calcula para un horizonte de 30 dias y debe ser mayor a 0.\n\nEvaluación: Este indicador se introdujo en Marzo de 2017, por lo que aún no hay suficiente información para una evaluación formal del mismo."
+  },
+  {
+    "objectID": "01-conceptos.html#encajes-marginales",
+    "href": "01-conceptos.html#encajes-marginales",
+    "title": "2  Colombia",
+    "section": "2.11 Encajes marginales",
+    "text": "2.11 Encajes marginales\n\nObjetivos: Acelerar la transmisión de la politica monetaria via tasas y de esa forma reducir el crecimiento del crédito y el apalancamiento de los agentes; i.e. encarecer la intermediación financiera. &lt;\nResponsable: La implementación es materia exclusiva del BR, aunque su control y aplicación del régimen sancionatorio es materia de la SFC.\nFuncionamiento: La última vez que se utilizaron fue entre mayo de 2007 y agosto de 2008. En dicho caso el encaje marginal alcanzó niveles del 27% para depósitos a la vista y de ahorro y del 5% para depósitos a término menores a 18 meses, sobre los excesos registrados tomando como referencia una fecha dada (mayo 7 de 2007). &lt;"
+  },
+  {
+    "objectID": "01-conceptos.html#provisiones-dinámicas",
+    "href": "01-conceptos.html#provisiones-dinámicas",
+    "title": "2  Colombia",
+    "section": "2.12 Provisiones dinámicas",
+    "text": "2.12 Provisiones dinámicas\n\nResponsable: SFC.\nObjetivos: Las provisiones dinámicas permiten reducir el impacto en el estado de resultados (P&G) cuando se presentan posibles cambios en el riesgo de crédito de los deudores en momentos en los cuales el deterioro de dichos activos se incrementa. En este sentido, en los periodos de mejora en la calidad crediticia se constituyen mayores provisiones de las que serian necesarias en tales condiciones, a fin de compensar, al menos en parte, las que deberian constituirse en periodos de deterioro en la calidad crediticia.\nFuncionamiento: Las provisiones individuales se pueden calcular con un modelo interno o con un modelo estándar provisto por el supervisor.\n\nCuando usan el segundo, todos los componentes de la Pérdida Esperada los provee la Superintendencia (i.e. Probabilidad de Default y la Pérdida Dado Incumplimiento).\nEn pocas palabras, la metodologia para el cálculo de la provisión individual es: Se estiman dos componentes: Componente Individual Prociclico (CIP) y un Componente Individual Contraciclico (CIC). Dependiendo de si la institución está en una fase “buena” o una “mala”, las formulas para el cálculo dela provisión varian - para pasar de “buena” a “mala”: 4 indicadores individuales de salud financiera activados por al menos 3 meses consecutivos. En la fase “buena”, se usa la metodologia de acumulación; en la “mala” se desacumula. La regulación permite que una entidad individual que esté enfrentando dificultades, independiente de las condiciones económicas generales, compense parte de su gasto en provisiones con el componente contraciclico. Implica que el Supervisor no debe pronunciarse sobre la fase del ciclo económico."
+  },
+  {
+    "objectID": "02-CR.html#colchón-anticiclico-de-capital-generalrequerimientos",
+    "href": "02-CR.html#colchón-anticiclico-de-capital-generalrequerimientos",
+    "title": "3  Costa Rica",
+    "section": "3.1 Colchón anticiclico de capital general/Requerimientos",
+    "text": "3.1 Colchón anticiclico de capital general/Requerimientos\n\nResponsable: Banco central de Costa Rica (BCCR)."
+  },
+  {
+    "objectID": "02-CR.html#ratio-de-apalancamiento",
+    "href": "02-CR.html#ratio-de-apalancamiento",
+    "title": "3  Costa Rica",
+    "section": "3.2 Ratio de apalancamiento",
+    "text": "3.2 Ratio de apalancamiento\n\nResponsable: BCCR.\nFuncionamiento: En consideración."
+  },
+  {
+    "objectID": "02-CR.html#variable-en-el-tiempoprovisión-dinámica-de-pérdidas-crediticias",
+    "href": "02-CR.html#variable-en-el-tiempoprovisión-dinámica-de-pérdidas-crediticias",
+    "title": "3  Costa Rica",
+    "section": "3.3 Variable en el tiempo/Provisión dinámica de pérdidas crediticias",
+    "text": "3.3 Variable en el tiempo/Provisión dinámica de pérdidas crediticias\n\nResponsable: BCCR.\nFuncionamiento: Emitido en junio del 2016. Vigencia a partir de septiembre de 2016 en transitorio del 7% de utilidades."
+  },
+  {
+    "objectID": "02-CR.html#colchón-de-capital-del-sector-especificorequerimientos",
+    "href": "02-CR.html#colchón-de-capital-del-sector-especificorequerimientos",
+    "title": "3  Costa Rica",
+    "section": "3.4 Colchón de capital del sector especifico/Requerimientos",
+    "text": "3.4 Colchón de capital del sector especifico/Requerimientos\n\nResponsable: BCCR."
+  },
+  {
+    "objectID": "02-CR.html#ratio-de-valor-de-garantia-ltv",
+    "href": "02-CR.html#ratio-de-valor-de-garantia-ltv",
+    "title": "3  Costa Rica",
+    "section": "3.5 Ratio de valor de garantia (LTV)",
+    "text": "3.5 Ratio de valor de garantia (LTV)\n\nObjetivos: Propuesta basada en Basilea III bajo consulta.\nResponsable: BCCR.\nFuncionamiento: Se considera el LTV en el análisis de capacidad de pago, como un aspecto cualitativo. Modificación al SUGEF 3-06: Cargo al capital que aplica para créditos hipotecarios residenciales a persona fIsica, depende de la relación monto del crédito entre valor de la garantia y si el cliente es generador o no de moneda extranjera."
+  },
+  {
+    "objectID": "02-CR.html#ratio-de-servicio-de-la-deuda-dti",
+    "href": "02-CR.html#ratio-de-servicio-de-la-deuda-dti",
+    "title": "3  Costa Rica",
+    "section": "3.6 Ratio de servicio de la deuda (DTI)",
+    "text": "3.6 Ratio de servicio de la deuda (DTI)\n\nObjetivos: Está en la hoja de ruta de las autoridades y ha sido consultado a la industria.\nResponsable: BCCR.\nFuncionamiento: Modificación de 1-05: Aplica un 1% de estimación genérica a:\n\ncréditos hipotecarios a personas fisicas (con un indicador superior a 35%)\ncréditos de consumo a personas fisicas (con un indicador superior a 30%).\n\n\nHay una gradualidad."
+  },
+  {
+    "objectID": "02-CR.html#limites-a-los-créditos-en-moneda-doméstica",
+    "href": "02-CR.html#limites-a-los-créditos-en-moneda-doméstica",
+    "title": "3  Costa Rica",
+    "section": "3.7 Limites a los créditos en moneda doméstica",
+    "text": "3.7 Limites a los créditos en moneda doméstica\n\nResponsable: BCCR."
+  },
+  {
+    "objectID": "02-CR.html#limites-a-los-créditos-en-moneda-extranjera",
+    "href": "02-CR.html#limites-a-los-créditos-en-moneda-extranjera",
+    "title": "3  Costa Rica",
+    "section": "3.8 Limites a los créditos en moneda extranjera",
+    "text": "3.8 Limites a los créditos en moneda extranjera\n\nResponsable: BCCR."
+  },
+  {
+    "objectID": "02-CR.html#ratio-de-requerimiento-de-reservas",
+    "href": "02-CR.html#ratio-de-requerimiento-de-reservas",
+    "title": "3  Costa Rica",
+    "section": "3.9 Ratio de requerimiento de reservas",
+    "text": "3.9 Ratio de requerimiento de reservas\n\nObjetivos: Como medida macroprudencial, las autoridades lo aplicaron a los flujos externos de capital.\nResponsable: BCCR.\nFuncionamiento: El requerimiento mInimo legal es de 15%."
+  },
+  {
+    "objectID": "02-CR.html#ratio-préstamo-a-depósito-ltd",
+    "href": "02-CR.html#ratio-préstamo-a-depósito-ltd",
+    "title": "3  Costa Rica",
+    "section": "3.10 Ratio préstamo a depósito (LTD)",
+    "text": "3.10 Ratio préstamo a depósito (LTD)\n\nResponsable: BCCR.\nFuncionamiento: 2016: ± 100% del capital; y un limite diario de variación de la posición en moneda extranjera del ± 4%. 2017: ± 100 % del capital; y un limite diario de variación de la posición en moneda extranjera del ± 2%."
+  },
+  {
+    "objectID": "02-CR.html#recaudación-impuestos-sobre-instituciones-financieras",
+    "href": "02-CR.html#recaudación-impuestos-sobre-instituciones-financieras",
+    "title": "3  Costa Rica",
+    "section": "3.11 Recaudación/ Impuestos sobre instituciones financieras",
+    "text": "3.11 Recaudación/ Impuestos sobre instituciones financieras\n\nResponsable: BCCR."
+  },
+  {
+    "objectID": "02-CR.html#recargos-de-capital-en-sifis",
+    "href": "02-CR.html#recargos-de-capital-en-sifis",
+    "title": "3  Costa Rica",
+    "section": "3.12 Recargos de capital en SIFIs",
+    "text": "3.12 Recargos de capital en SIFIs\n\nResponsable: BCCR."
+  },
+  {
+    "objectID": "02-CR.html#limites-a-las-exposiciones-interbancarias",
+    "href": "02-CR.html#limites-a-las-exposiciones-interbancarias",
+    "title": "3  Costa Rica",
+    "section": "3.13 Limites a las exposiciones interbancarias",
+    "text": "3.13 Limites a las exposiciones interbancarias\n\nResponsable: BCCR."
+  },
+  {
+    "objectID": "02-CR.html#limites-de-concentración",
+    "href": "02-CR.html#limites-de-concentración",
+    "title": "3  Costa Rica",
+    "section": "3.14 Limites de concentración",
+    "text": "3.14 Limites de concentración\n\nObjetivos: Limitar el riesgo de crédito y de inversión de las entidades, grupos y conglomerados financieros, identificando los riesgos correlacionados entre si originados por los deudores o los emisores que conforman los grupos de interés económico.\nResponsable: BCCR y Superintendencia General de Entidades Financieras (SUGEF).\nFuncionamiento: El limite máximo para el total de las operaciones activas que la entidad puede realizar con cada persona individual o con el conjunto de personas que conforman un grupo de interés económico, será de una suma equivalente al 20% del capital ajustado.\nSituación: Ha logrado mitigar los riesgos de concentración y correlación existente en los grupos de interés económicos."
+  },
+  {
+    "objectID": "02-CR.html#requerimientos-de-liquidez-colchones",
+    "href": "02-CR.html#requerimientos-de-liquidez-colchones",
+    "title": "3  Costa Rica",
+    "section": "3.15 Requerimientos de liquidez/ Colchones",
+    "text": "3.15 Requerimientos de liquidez/ Colchones\n\nResponsable: BCCR.\nFuncionamiento: No puede ser menos del 100%."
+  },
+  {
+    "objectID": "02-CR.html#mágenes-recorte-en-transacciones-de-mercado-financiero-colateralizadas",
+    "href": "02-CR.html#mágenes-recorte-en-transacciones-de-mercado-financiero-colateralizadas",
+    "title": "3  Costa Rica",
+    "section": "3.16 Mágenes/ Recorte en transacciones de mercado financiero colateralizadas",
+    "text": "3.16 Mágenes/ Recorte en transacciones de mercado financiero colateralizadas\n\nResponsable: BBCR.\nFuncionamiento: A junio de 2017 se mantiene."
+  },
+  {
+    "objectID": "02-CR.html#ratio-de-cobertura-de-liquidez-lcr",
+    "href": "02-CR.html#ratio-de-cobertura-de-liquidez-lcr",
+    "title": "3  Costa Rica",
+    "section": "3.17 Ratio de cobertura de liquidez (LCR)",
+    "text": "3.17 Ratio de cobertura de liquidez (LCR)\n\nObjetivos: Fortaleciendo de la gestión del riesgo de liquidez. Mejoramiento del perfil de las entidades ante escenarios adversos.\nResponsable: BCCR/SUGEF.\nFuncionamiento: Las entidades deben calcular diariamente el indicador. Se calcula como el Fondo de Activos Liquidos entre Salidas de Efectivo Totales menos Entradas de Efectivo Totales.\nSituación: Muchas de las entidades se encuentran por debajo del limite establecido, su gestión ha sido compleja de cara a la profundidad del mercado local y sus carencias."
+  },
+  {
+    "objectID": "02-CR.html#pruebas-de-estrés",
+    "href": "02-CR.html#pruebas-de-estrés",
+    "title": "3  Costa Rica",
+    "section": "3.18 Pruebas de estrés",
+    "text": "3.18 Pruebas de estrés\n\nResponsable: BCCR/SUGEF.\nFuncionamiento:\n\nBanco Central hace pruebas de estrés para: 1. Riesgo de crédito (Top-Down) 2. Riesgo mercado\n3. Riesgo liquidez\n4. Riesgo de contagio\nSuperintendencia: 1. Riesgo de crédito (Bottom-UP)"
+  },
+  {
+    "objectID": "02-CR.html#provisiones-dinámicas",
+    "href": "02-CR.html#provisiones-dinámicas",
+    "title": "3  Costa Rica",
+    "section": "3.19 Provisiones Dinámicas",
+    "text": "3.19 Provisiones Dinámicas\n\nObjetivos: Reforzamiento de la solvencia y capacidad de resistencia de las entidades financieras Crecimiento responsable del crédito\nResponsable: SUGEF.\nFuncionamiento: Posee una gradualidad al inicio, cuando la entidad alcanza un nivel determinado de provisiones su funcionamiento se vuelve dinámico.\nSituación: Hay entidades que las impacta más que a otras, en general el SFN considera que es una herramienta que las fortalece."
+  },
+  {
+    "objectID": "02-CR.html#limite-al-crecimiento-del-crédito",
+    "href": "02-CR.html#limite-al-crecimiento-del-crédito",
+    "title": "3  Costa Rica",
+    "section": "3.20 Limite al crecimiento del crédito",
+    "text": "3.20 Limite al crecimiento del crédito\n\nObjetivos: Disminución de la exposición a riesgos asociados a la colocación acelerada de recursos con cargo a una misma persona o grupo financiero vinculado entre si por negocios, capitales o administración.\nResponsable: SUGEF.\nFuncionamiento: Análisis efectuados permiten considerar como razonable un crecimiento del crédito en 1.5 veces al aumento del valor de la producción en términos nominales, medido por el Producto Interno Bruto.\nSituación: Satisfactorio en el entendido que retroalimenta el proceso de supervisión de las entidades financieras."
+  },
+  {
+    "objectID": "02-CR.html#requerimiento-de-reservas-regulaciones-de-politica-monetaria-bccr",
+    "href": "02-CR.html#requerimiento-de-reservas-regulaciones-de-politica-monetaria-bccr",
+    "title": "3  Costa Rica",
+    "section": "3.21 Requerimiento de Reservas, (Regulaciones de Politica Monetaria, BCCR)",
+    "text": "3.21 Requerimiento de Reservas, (Regulaciones de Politica Monetaria, BCCR)\n\nResponsable: BCCR."
+  },
+  {
+    "objectID": "02-CR.html#limite-al-valor-de-garantia-ltv",
+    "href": "02-CR.html#limite-al-valor-de-garantia-ltv",
+    "title": "3  Costa Rica",
+    "section": "3.22 Limite al valor de garantia (LTV)",
+    "text": "3.22 Limite al valor de garantia (LTV)\n\nObjetivos: Otorgamiento prudente de créditos con garantia hipotecaria. Fortalecimiento de niveles Suficiencia P. a mayor riesgo asumido.\nResponsable: SUGEF.\nFuncionamiento: Es un cargo al capital que aplica para créditos hipotecarios residenciales a persona fisica, depende de la relación monto del crédito entre valor de la garantia y si el cliente es generador o no de moneda extranjera.\nSituación: En evaluación."
+  },
+  {
+    "objectID": "02-CR.html#limite-de-servicio-de-la-deuda-a-ingreso-dsti",
+    "href": "02-CR.html#limite-de-servicio-de-la-deuda-a-ingreso-dsti",
+    "title": "3  Costa Rica",
+    "section": "3.23 Limite de servicio de la deuda a ingreso (DSTI)",
+    "text": "3.23 Limite de servicio de la deuda a ingreso (DSTI)\n\nObjetivos: Disminución del endeudamiento de diversos sectores del sistema financiero.\nResponsable: SUGEF.\nFuncionamiento: Aplica un 1% de estimación genérica a:\n\ncréditos hipotecarios a personas fisicas (con un indicador superior a 35%) y\n\ncréditos de consumo a personas fisicas (con un indicador superior a 30%).\n\n\nHay una gradualidad.\n\nSituación: En evaluación."
+  },
+  {
+    "objectID": "02-CR.html#restricciones-al-crédito-en-dólares",
+    "href": "02-CR.html#restricciones-al-crédito-en-dólares",
+    "title": "3  Costa Rica",
+    "section": "3.24 Restricciones al crédito en dólares",
+    "text": "3.24 Restricciones al crédito en dólares\n\nObjetivos: Otorgamiento prudente de créditos denominados en moneda extranjera. Fortalecimiento de niveles Suficiencia P. a mayor riesgo asumido.\nResponsable: SUGEF.\nFuncionamiento: Los créditos denominados en moneda extranjera colocados en deudores no generadores de divisas; deberá aplicárseles una estimación genérica adicional de 1,5%.\nSituación: En evaluación."
+  },
+  {
+    "objectID": "02-CR.html#limite-a-la-exposición-entre-instituciones-ltv",
+    "href": "02-CR.html#limite-a-la-exposición-entre-instituciones-ltv",
+    "title": "3  Costa Rica",
+    "section": "3.25 Limite a la exposición entre instituciones (LTV)",
+    "text": "3.25 Limite a la exposición entre instituciones (LTV)\n\nObjetivos: Limitar el riesgo de crédito y de inversión de las entidades, grupos y conglomerados financieros originado en el conflicto de interés que surge entre la entidad, grupo o conglomerado y las personas vinculadas a éstas.\nResponsable: SUGEF.\nFuncionamiento: El limite máximo para el total de las operaciones activas que la entidad podrá realizar con el conjunto de las personas que conforman el grupo vinculado, será de una suma equivalente al 20% del capital ajustado.\nSituación: Ha logrado mitigar los riesgos de concentración y correlación existente entre las entidades financieras."
+  },
+  {
+    "objectID": "03-SV.html#requerimiento-de-activos-liquidos",
+    "href": "03-SV.html#requerimiento-de-activos-liquidos",
+    "title": "4  El Salvador",
+    "section": "4.1 Requerimiento de activos liquidos",
+    "text": "4.1 Requerimiento de activos liquidos\n\nAntecedentes: Regulado a través de las “Normas para el requerimiento de activos liquidos de los bancos” (NPB3-11), vigentes a partir de enero de 2005.\nObjetivos: Mantener la estabilidad del sistema bancario, mejorando los mecanismos propios de respuesta de las entidades ante problemas temporales de liquidez.\nResponsable: Regulación: Comité de Normas del Banco Central de Reserva (BCR). Supervisión: Superintendencia del Sistema Financiero (SSF).\nFuncionamiento: Mantener en todo momento una relación del tres por ciento del promedio de depósitos diarios del mes anterior en inversiones en títulos valores extranjeros de fácil realización, depósito a la vista en el BCR, Letras y Certificados del Tesoro de El Salvador y Certificados Negociables de Liquidez.\nSituación: Las entidades han dado cumplimiento a la medida.\n\nDirección Web Consulta"
+  },
+  {
+    "objectID": "03-SV.html#limite-a-la-exposición-entre-entidades",
+    "href": "03-SV.html#limite-a-la-exposición-entre-entidades",
+    "title": "4  El Salvador",
+    "section": "4.2 Limite a la exposición entre entidades",
+    "text": "4.2 Limite a la exposición entre entidades\n\nAntecedentes: Regulado en el articulo 197 de la Ley de Bancos y articulos 48 y 161 de la Ley de Bancos Cooperativos y Sociedades de Ahorro y Crédito. Regulación complementaria desarrollada en las “Normas de Aplicación de los Limites en la Asunción de los Riesgos de los Bancos” (NPB4-36).\nObjetivos: Establecer un limite a la exposición con personas o grupos económicos.\nResponsable: Supervisión: SSF.\nFuncionamiento: Limite a la exposición en un solo deudor o grupo en relación con el fondo patrimonial.\nSituación: Las entidades mantienen bajas exposiciones a deudores o grupos.\nDirección Web Consulta: http://www.ssf.gob.sv/descargas/Leyes/Leyes%20Financieras/Ley%20de%20Bancos.pdf\n\n\nLey de bancos\nLey de bancos cooperativos\nNormativa"
+  },
+  {
+    "objectID": "03-SV.html#limite-a-la-exposición-entre-entidades-limites-a-la-exposición-en-moneda-extranjera",
+    "href": "03-SV.html#limite-a-la-exposición-entre-entidades-limites-a-la-exposición-en-moneda-extranjera",
+    "title": "4  El Salvador",
+    "section": "4.3 Limite a la exposición entre entidades Limites a la exposición en moneda extranjera",
+    "text": "4.3 Limite a la exposición entre entidades Limites a la exposición en moneda extranjera\n\nAntecedentes: Regulado a través de las “Normas sobre la relación entre las operaciones activas y pasivas en moneda extranjera de los bancos” (NPB3-07), vigentes a partir de enero de 2001.\nObjetivos: Establecer un limite al descalce entre activos y pasivos en moneda extranjera.\nResponsable: Supervisión: SSF.\nFuncionamiento: Limite de exposición de 10% del fondopatrimonial para el diferencial entre activos y pasivos en moneda extranjera.\nSituación: Las entidades mantienen bajas exposiciones en moneda extranjera.\n\nDirección Web Consulta"
+  },
+  {
+    "objectID": "03-SV.html#reducción-de-los-requerimientos-de-reserva-de-liquidez-por-el-otorgamiento-de-préstamos-productivos",
+    "href": "03-SV.html#reducción-de-los-requerimientos-de-reserva-de-liquidez-por-el-otorgamiento-de-préstamos-productivos",
+    "title": "4  El Salvador",
+    "section": "4.4 Reducción de los requerimientos de reserva de liquidez por el otorgamiento de préstamos productivos",
+    "text": "4.4 Reducción de los requerimientos de reserva de liquidez por el otorgamiento de préstamos productivos\n\nAntecedentes: Regulado a través de las “Medidas temporales para el Cálculo de la Reserva de Liquidez”, vigentes a partir de febrero de 2015 por un periodo de cuatro años.\nObjetivos: Incentivar el otorgamiento de préstamos productivos para impulsar el crecimiento económico y la generación de empleo.\nResponsable: Regulación: Comité de Normas del BCR. Supervisión: SSF.\nFuncionamiento: Reducción de los requerimientos de reserva de liquidez por el otorgamiento de préstamos a empresas de sectores productivos prioritarios para el desarrollo de una politica de fomento, diversificación y transformación productiva para El Salvador.\nSituación: En 2015 el crecimiento promedio interanual del sector empresas fue de 1.5%; para 2017 alcanzó 7.3%.\n\nDirección Web Consulta"
+  },
+  {
+    "objectID": "03-SV.html#coeficiente-de-cobertura-de-liquidez-lcr-y-coeficiente-de-financiamiento-estable-neto-cfen",
+    "href": "03-SV.html#coeficiente-de-cobertura-de-liquidez-lcr-y-coeficiente-de-financiamiento-estable-neto-cfen",
+    "title": "4  El Salvador",
+    "section": "4.5 Coeficiente de cobertura de liquidez (LCR) y Coeficiente de Financiamiento Estable Neto (CFEN)",
+    "text": "4.5 Coeficiente de cobertura de liquidez (LCR) y Coeficiente de Financiamiento Estable Neto (CFEN)\n\nAntecedentes: Corresponde a un proyecto de modificación de las “Normas para la gestión del riesgo de liquidez” (NRP-05).\nObjetivos: Incorporar estándares internacionales referentes a la gestión del riesgo de liquidez. Responsable: Regulación: Comité de Normas del BCR. Supervisión: SSF.\nFuncionamiento: Las entidades deben contar con activos liquidos para enfrentar potenciales salidas netas de fondos en un escenario de estrés agudo de 30 dias y mantener un perfil de financiamiento estable para un horizonte de un año.\nSituación: Proyecto en proceso de elaboración por parte de la Superintendencia del Sistema Financiero."
+  },
+  {
+    "objectID": "03-SV.html#requerimiento-de-provisiones-por-incobrabilidad-en-base-a-pérdidas-esperadas",
+    "href": "03-SV.html#requerimiento-de-provisiones-por-incobrabilidad-en-base-a-pérdidas-esperadas",
+    "title": "4  El Salvador",
+    "section": "4.6 Requerimiento de provisiones por incobrabilidad en base a pérdidas esperadas*",
+    "text": "4.6 Requerimiento de provisiones por incobrabilidad en base a pérdidas esperadas*\n\nAntecedentes: Corresponde a un proyecto de modificación de las “Normas para clasificar los activos de riesgo crediticio y constituir las reservas de saneamiento” (NCB-022).\nObjetivos: Que las provisiones crediticias que las entidades determinan se apeguen a los riesgos crediticios asumidos.\nResponsable: Regulación: Comité de Normas del BCR. Supervisión: SSF.\nFuncionamiento: Constitución de provisiones por incobrabilidad de préstamos por destino con base al modelo de pérdidas esperadas desarrollado por la Superintendencia del Sistema Financiero.\nSituación: Proyecto remitido por la Superintendencia del Sistema Financiero al Comité de Normas del Banco Central de Reserva en 2017."
   }
 ]

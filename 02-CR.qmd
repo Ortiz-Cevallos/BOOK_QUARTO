@@ -1,0 +1,213 @@
+---
+title: "Costa Rica"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+code_download: true
+code_folding: hide
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: true
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+library(reticulate)
+```
+
+## Colchón anticiclico de capital general/Requerimientos
+
+* **Responsable:** Banco central de Costa Rica (BCCR). 
+
+## Ratio de apalancamiento
+
+*  **Responsable:** BCCR.  
+
+*  **Funcionamiento:** En consideración.
+
+## Variable en el tiempo/Provisión dinámica de pérdidas crediticias
+
+* **Responsable:** BCCR.
+
+* **Funcionamiento:** Emitido en junio del 2016. Vigencia a partir de septiembre de 2016 en transitorio del 7% de utilidades. 
+
+## Colchón de capital del sector especifico/Requerimientos
+
+* **Responsable:** BCCR.
+
+
+## Ratio de valor de garantia (LTV)
+
+* **Objetivos:** Propuesta basada en Basilea III bajo consulta. 
+
+* **Responsable:** BCCR. 
+
+* **Funcionamiento:** Se considera el LTV en el análisis de capacidad de pago, como un aspecto cualitativo. 
+Modificación al SUGEF 3-06: Cargo al capital que aplica para créditos hipotecarios residenciales a persona fIsica, depende de la relación monto del crédito entre valor de la garantia y si el cliente es generador o no de moneda extranjera. 
+
+## Ratio de servicio de la deuda (DTI)
+
+* **Objetivos:** Está en la hoja de ruta de las autoridades y ha sido consultado a la industria.  
+
+* **Responsable:** BCCR. 
+
+* **Funcionamiento:** Modificación de 1-05: 
+Aplica un 1% de estimación genérica a: 
+    1. créditos hipotecarios a personas fisicas (con un indicador superior a 35%) 
+    2. créditos de consumo a personas fisicas (con un indicador superior a 30%). 
+
+Hay una gradualidad. 
+
+## Limites a los créditos en moneda doméstica
+
+* **Responsable:** BCCR. 
+
+## Limites a los créditos en moneda extranjera
+
+* **Responsable:** BCCR.
+
+## Ratio de requerimiento de reservas
+
+* **Objetivos:** Como medida macroprudencial, las autoridades lo aplicaron a los flujos externos de capital. 
+
+* **Responsable:** BCCR. 
+
+* **Funcionamiento:** El requerimiento mInimo legal es de 15%.  
+
+## Ratio préstamo a depósito (LTD)
+
+* **Responsable:** BCCR.
+
+* **Funcionamiento:**   2016: ± 100% del capital; y un limite diario de variación de la posición en moneda extranjera del ± 4%. 2017: ± 100 % del capital; y un limite diario de variación de la posición en moneda extranjera del ± 2%.  
+
+## Recaudación/ Impuestos sobre instituciones financieras
+
+* **Responsable:** BCCR. 
+
+## Recargos de capital en SIFIs
+
+* **Responsable:** BCCR.
+
+## Limites a las exposiciones interbancarias
+
+* **Responsable:** BCCR.
+
+## Limites de concentración
+
+* **Objetivos:** Limitar el riesgo de crédito y de inversión de las entidades, grupos y conglomerados financieros, identificando los riesgos correlacionados entre si originados por los deudores o los emisores que conforman los grupos de interés económico. 
+
+* **Responsable:** BCCR y Superintendencia General de Entidades Financieras (SUGEF). 
+
+* **Funcionamiento:** El limite máximo para el total de las operaciones activas que la entidad puede realizar con cada persona individual o con el conjunto de personas que conforman un grupo de interés económico, será de una suma equivalente al 20% del capital ajustado. 
+
+* **Situación:** Ha logrado mitigar los riesgos de concentración y correlación existente en los grupos de interés económicos. 
+
+## Requerimientos de liquidez/ Colchones
+
+* **Responsable:** BCCR. 
+
+* **Funcionamiento:** No puede ser menos del 100%. 
+
+## Mágenes/ Recorte en transacciones de mercado financiero colateralizadas
+
+*  **Responsable:** BBCR.
+
+* **Funcionamiento:** A junio de 2017 se mantiene. 
+
+## Ratio de cobertura de liquidez (LCR)
+
+* **Objetivos:**  Fortaleciendo de la gestión del riesgo de liquidez.  Mejoramiento del perfil de las entidades ante escenarios adversos. 
+
+* **Responsable:** BCCR/SUGEF.
+
+* **Funcionamiento:** Las entidades deben calcular diariamente el indicador. Se calcula como el Fondo de Activos Liquidos entre Salidas de Efectivo Totales menos Entradas de Efectivo Totales. 
+    
+* **Situación:** Muchas de las entidades se encuentran por debajo del limite establecido, su gestión ha sido compleja de cara a la profundidad del mercado local y sus carencias. 
+
+## Pruebas de estrés 
+
+* **Responsable:** BCCR/SUGEF.
+
+* **Funcionamiento:**  
+
+Banco Central hace pruebas de estrés para: 
+    1.    Riesgo de crédito (Top-Down) 
+    2.    Riesgo mercado  
+    3.    Riesgo liquidez  
+    4.    Riesgo de contagio 
+    
+Superintendencia: 
+    1.    Riesgo de crédito (Bottom-UP)
+
+
+## Provisiones Dinámicas
+
+* **Objetivos:**  Reforzamiento de la solvencia y capacidad de resistencia de las entidades financieras Crecimiento responsable del crédito  
+
+* **Responsable:** SUGEF. 
+
+* **Funcionamiento:** Posee una gradualidad al inicio, cuando la entidad alcanza un nivel determinado de provisiones su funcionamiento se vuelve dinámico. 
+
+* **Situación:** Hay entidades que las impacta más que a otras, en general el SFN considera que es una herramienta que las fortalece. 
+
+## Limite al crecimiento del crédito
+
+* **Objetivos:** Disminución de la exposición a riesgos asociados a la colocación acelerada de recursos con cargo a una misma persona o grupo financiero vinculado entre si por negocios, capitales o administración. 
+
+* **Responsable:** SUGEF.
+
+* **Funcionamiento:** Análisis efectuados permiten considerar como razonable un crecimiento del crédito en 1.5 veces al aumento del valor de la producción en términos nominales, medido por el Producto Interno Bruto. 
+
+* **Situación:** Satisfactorio en el entendido que retroalimenta el proceso de supervisión de las entidades financieras. 
+
+## Requerimiento de Reservas, (Regulaciones de Politica Monetaria, BCCR)
+
+* **Responsable:** BCCR.
+
+## Limite al valor de garantia (LTV)
+
+* **Objetivos:**  Otorgamiento prudente de créditos con garantia hipotecaria. Fortalecimiento de niveles Suficiencia P. a mayor riesgo asumido. 
+    
+* **Responsable:** SUGEF.
+
+* **Funcionamiento:** Es un cargo al capital que aplica para créditos hipotecarios residenciales a persona fisica, depende de la relación monto del crédito entre valor de la garantia y si el cliente es generador o no de moneda extranjera.  
+    
+* **Situación:** En evaluación. 
+
+## Limite de servicio de la deuda a ingreso (DSTI)
+
+* **Objetivos:** Disminución del endeudamiento de diversos sectores del sistema financiero. 
+
+* **Responsable:** SUGEF.
+
+* **Funcionamiento:** Aplica un 1% de estimación genérica a:  
+
+     1.   créditos hipotecarios a personas fisicas (con un indicador superior a 35%) y  
+     2.   créditos de consumo a personas fisicas (con un indicador superior a 30%). 
+
+Hay una gradualidad. 
+    
+* **Situación:** En evaluación. 
+
+## Restricciones al crédito en dólares
+
+*  **Objetivos:**  Otorgamiento prudente de créditos denominados en moneda extranjera. 	Fortalecimiento de niveles Suficiencia P. a mayor riesgo asumido. 
+
+* **Responsable:** SUGEF.
+
+* **Funcionamiento:** Los créditos denominados en moneda extranjera colocados en deudores no generadores de divisas; deberá aplicárseles una estimación genérica adicional de 1,5%. 
+
+* **Situación:** En evaluación. 
+
+## Limite a la exposición entre instituciones (LTV)
+
+* **Objetivos:** Limitar el riesgo de crédito y de inversión de las entidades, grupos y conglomerados financieros originado en el conflicto de interés que surge entre la entidad, grupo o conglomerado y las personas vinculadas a éstas. 
+
+* **Responsable:** SUGEF.
+
+* **Funcionamiento:** El limite máximo para el total de las operaciones activas que la entidad podrá realizar con el conjunto de las personas que conforman el grupo vinculado, será de una suma equivalente al 20% del capital ajustado. 
+
+* **Situación:** Ha logrado mitigar los riesgos de concentración y correlación existente entre las entidades financieras. 

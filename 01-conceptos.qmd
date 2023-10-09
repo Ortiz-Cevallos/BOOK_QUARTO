@@ -1,6 +1,5 @@
 ---
-title: "Aplicación para Guatemala"
-author: "[Luis Ortiz-Cevallos](https://ortiz-cevallos.github.io/MYSELF/)"
+title: "Colombia"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
@@ -20,36 +19,190 @@ library(reticulate)
 ```
 
 
-## Blanchard-Quah ortogonalización (restricciones) sobre C(1)
+## Limite al valor de garantia (LTV)
+
+* **Objetivos:** 
+    1. Limitar el apalancamiento de los hogares y prevenir el sobrendeudamiento.
+    2. Limitar la exposición de los establecimientos de crédito a caidas en los precios de la
+vivienda.</p>
+
+* **Responsable:** La regulación es materia exclusiva del gobierno, aunque su control y aplicación del régimen sancionatorio es materia de la Superintendencia Financiera de Colombia (SFC). </p> 
 
 
-Al observar la evolución del crédito hacia consumo provisto por el sistema bancario guatemalteco y disponible en @SECMCADATOS, se observa una series con una tendendencia estocástica. 
+* **Funcionamiento:** El monto del crédito podrá ser hasta del setenta por ciento (70%) del valor del inmueble. Dicho valor será el del precio de compra o el de un avalúo técnicamente practicado dentro de los seis (6) meses anteriores al otorgamiento del crédito.  En los créditos destinados a financiar vivienda de interés social, el monto del préstamo podrá ser hasta del ochenta por ciento (80%) del valor del inmueble.  
+
+*  **Situación:** En los últimos años el promedio de LTV es del 60% en VIS y 50% en No VIS, porcentajes que permiten que exista una brecha importante en el caso que se presente una caida en los precios de la vivienda. Aun cuando no existe una revisión formal de la regulación, desde su emisión Colombia no ha experimentado una crisis hipotecaria y la morosidad de ésta ha disminuido sustancialmente, asi como el apalancamiento de los hogares asociado a vivienda. 
 
 
-```{r message=FALSE, warning=FALSE}
-library("zoo")
-library("xts")
-library(dplyr)
-library(ggplot2)
-library(kableExtra)
-library(xtable)
-library(tidyr)
-library(quantmod)
-library(RColorBrewer)
-library(gridExtra)
-#CARGAMOS DATOS MENSUALES
-DATA_MES<-as.xts(read.zoo("GT_MES.csv", index.column = 1,
-          sep = ";", header=TRUE, format = "%Y-%m-%d"))
-CREDITO<-DATA_MES$CRED
-CREDITO<-data.frame(date=index(CREDITO), coredata(CREDITO))
-CREDITO<-filter(CREDITO, date >= "2008-01-01")
-colnames(CREDITO)<-c("date","CREDITO")
-CREDITO<-mutate(CREDITO, CONSUMO=log(CREDITO))
-G<-ggplot(CREDITO, aes(x=date, y=CONSUMO))
-G<-G+labs(y="Logaritmo",
-          x="Fecha", title = "Guatemala: evolución del crédito al consumo",
-          caption = "https://www.secmca.org/wp-content/uploads/2023/03/REPORTE_INDICADO
-RES_BANCARIOS_MARZO_2023.xlsx")+
-  geom_line(size=1.5)
-G
+
+## Limite al servicio de la deuda (DTI)
+
+* **Objetivos:** Limitar el apalancamiento de los hogares y prevenir el sobrendeudamiento.
+
+* **Responsable:** La regulación es materia exclusiva del gobierno, aunque su control y aplicación del régimen sancionatorio es materia de la SFC. 
+
+* **Funcionamiento:** La primera cuota del crédito no podrá representar más del treinta por ciento (30%) de los ingresos familiares. 
+ 
+ *  **Situación:** Aun cuando no existe una revisión formal de la regulación, desde su emisión Colombia no ha experimentado una crisis hipotecaria y la morosidad de ésta ha disminuido sustancialmente, asi como el apalancamiento de los hogares asociado a vivienda. 
+ 
+## Limites a las operaciones de crédito en ML
+
+* **Objetivos:** El tope a la tasa de crecimiento del crédito se implementó en el mes de marzo de 1994. La razón para su implementación respondia al temor del Banco de la República en que el alto crecimiento del crédito (superior al 25% real anual en alguno meses de 1993), estuviera alimentando una burbuja hipotecaria. En esos momentos, los precios de la vivienda venian incrementándose rápidamente, además no existian limites al LTV - llegó a financiarse hasta el 90%. 
+
+* **Responsable:** La definición de las condiciones bajo las cuales se hace efectiva la ley es responsabilidad del BR y la SFC supervisa su cumplimiento. 
+
+* **Funcionamiento:** En situaciones excepcionales y por periodos que sumados en el año no excedan de ciento veinte (120) dias, se podrán imponer limites de crecimiento a la cartera y a las demás operaciones activas que realicen los establecimientos de crédito. Los establecimientos de crédito no podrán tener un crecimiento en el monto total de sus operaciones activas superior al 2,2% mensual con respecto a las cifras registradas en sus balance al 28 de febrero de 1994. 
+
+* **Situación:** La evidencia sobre la efectividad de la regulación parece apuntar a que ésta no fue muy efectiva. De hecho, en su Informe de la Junta Directiva al Congreso de la República de julio de 1994, el Banco de la República afirmo: 
+
+*"Frente al comportamiento registrado por la cartera, (...) la Junta Directiva no permaneció pasiva. En primer lugar, mediante su Resolución 6 de marzo 15 de 1994, fijó un tope máximo al crecimiento mensual de la cartera (...). Sin embargo, la efectividad del control de la cartera no fue la esperada, lo cual hizo necesario hacer efectivas decisiones que se tomaron paralelamente, tendientes a corregir los excesos de liquidez de la economía"*
+
+
+## Limites de concentración
+
+*  **Objetivos:** Limitar el riesgo de concentración en los portafolios de crédito. 
+
+* **Responsable:** La regulación es materia exclusiva del gobierno, aunque su control y aplicación del régimen sancionatorio es materia de la SFC. 
+
+* **Funcionamiento:** Ningún establecimiento de crédito puede realizar con persona alguna, directa o indirectamente, operaciones activas de crédito que, conjunta o separadamente, superen el diez por ciento (10%) de su patrimonio técnico, (equivalente en Colombia del Tier 2 de Basilea III) si la única garantia de la operación es el patrimonio del deudor. 
+Podrá ser hasta el 25% siempre y cuando las operaciones cuenten con garantias suficientes para amparar el riesgo que exceda del 5% de dicho patrimonio. 
+Podrá ser hasta el 30% si son operaciones realizadas con instituciones financieras. 
+Los establecimientos de crédito que tengan filiales en el exterior deberán consolidar con éstas sus operaciones de crédito individuales. 
+
+*  **Situación:** No ha habido evaluaciones formales de esta medida. 
+
+## Limites a los descalces cambiarios
+
+* **Objetivos:** Limitar el riesgo cambiario. 
+
+* **Responsable:** La implementación es materia exclusiva del BR, aunque su control y aplicación del régimen sancionatorio es materia de la SFC.  
+
+* **Funcionamiento:** Hay dos herramientas: 
+
+* **1. Posición Propia (PP)**: La diferencia entre los derechos y las obligaciones denominados en ME. Limites de [-5%, 20%] del patrimonio técnico. 
+
+* **2. Indicador de Riesgo Cambiario (IRC)**: Se calcula la PP **en cada moneda**. Todas las posiciones > 0 se convierten a USD y se suman. Este es el IRC+. De manera análoga se construye el IRC-. Los limites son 40% del patrimonio técnico (IRC+) y -40% (IRC-). 
+Se usan promedios de 3 dias en el cálculo de ambos indicadores (PP e IRC). 
+*  **Situación:** No ha habido evaluaciones formales de esta medida, pero en Colombia el bajo nivel de descalces cambiarios de los intermediarios y de sus deudores, ha permitido que la tasa de cambio efectivamente actúe como un mitigador de choques externos. 
+
+## Limites a los créditos en ME
+
+*  **Objetivos:** Limitar el riesgo cambiario y de transformación de plazos. 
+
+* **Responsable:** La implementación es materia exclusiva del BR, aunque su control y aplicación del régimen sancionatorio es materia de la SFC.  
+
+* **Funcionamiento:** Fondos en ME pueden utilizarse para otorgar préstamos en la misma moneda y a un plazo igual o inferior. Pueden usarse para dar un crédito en COP solo si el crédito en ME está cubierto con derivados o con inversiones en subsidiarias en el exterior. El intermediario no puede tener créditos cubiertos en ME, que esté fondeando créditos en COP, por un saldo > 20% del patrimonio técnico (si el crédito tiene madurez < 1 año). No hay limite para aquellos créditos en ME con una madurez superior a 1 año. También pueden usar créditos en ME para crear coberturas sintéticas. 
+
+No se permite a los intermediarios captar en ME (salvo algunas excepciones). 
+
+* **Situación:** Aplica análisis de los limites a los descalces cambiarios. 
+
+
+## Limites al apalancamiento 
+
+* **Objetivos:**
+    1. Limitar la presión del mercado de derivados sobre la tasa de cambio.
+    2. Limitar el riesgo en el mercado de derivados (limitando el apalancamiento). </p>
+    
+*  **Responsable:** La implementación es materia exclusiva del BR, aunque su control y aplicación del régimen sancionatorio es materia de la SFC. 
+
+*  **Funcionamiento:** Hay dos instrumentos:
+
+  1.  **Posición Bruta de Apalancamiento (PBA)**: El limite exige que el saldo nominal bruto (compras más ventas) de las operaciones sobre instrumentos en ME con cumplimiento igual o superior a un dia sea máximo 5.5 veces el valor del patrimonio técnico.
+
+  2. **Posición Propia de Contado (PPC)**: Se calcula partiendo de la PP y excluyendo algunos rubros del total de derechos y obligaciones en ME, como por ejemplo las inversiones en ME hasta el vencimiento o las posiciones en operaciones de derivados (derechos y obligaciones a futuro). Limites de [-20%, 50%] del patrimonio técnico. Se usan promedios de 3 dias en el cálculo de ambos indicadores (PBA y PPC).
+
+* **Situación:** No se ha realizado una evaluación formal de estas medidas. </p>
+
+
+## Controles a los flujos de capital 
+
+* **Objetivos:**
+    1. Reducir la fragilidad financiera que pueden generar los descalces cambiarios.
+    2. Desincentivar la entrada de flujos especulativos:
+        i. Que acentúan las presiones sobre la tasa de cambio;
+        ii. Que puedan llevar a una sobrevaloración de los precios de los activos.
+
+* **Responsable:** Existen tres herramientas principales: i) depósito al endeudamiento externo; ii) depósito a la inversión extranjera de portafolio y iii) control a la IED. La primera la implementa el BR, las otras dos el gobierno a través del Ministerio de Hacienda. 
+
+* **Funcionamiento:**
+
+  1. **Depósito al endeudamiento externo:** Se requirió un depósito proporcional al monto del crédito. El depósito fluctuaba entre 10% y 93% del monto solicitado, mientras que el periodo de tenencia oscilaba entre 6 y 24 meses. La última vez que se impuso este depósito fue en mayo de 2007, cuando se estableció en 40% del valor del desembolso, con un término para su redención de 6 meses. Está inactivo desde octubre de 2008. 
+  
+  2. Depósito a la inversión extranjera de portafolio:** En mayo de 2007 el Ministerio de Hacienda estableció un depósito a la inversión de portafolio en 40%. Posteriormente, en mayo de 2008 aumentó a 50%. En octubre de 2008 se eliminó este depósito.
+  
+Se estableció un periodo minimo de permanencia de 2 años. Se eliminó en octubre de 2008.
+
+* **Situación:**  Dado que los controles generalmente son impuestos en **conjunto con otras politicas adicionales**, es dificil medir su efectividad. Sin embargo, se ha tratado de evaluar su alcance a la luz de los objetivos, considerando tanto los costos y los beneficios. 
+
+Se han realizado ejercicios para determinar si los controles contribuyen a reducir los volúmenes totales de flujos moderando la apreciación de la moneda y/o si el efecto es un cambio en la composición de los mismos. 
+
+La evidencia empirica ha encontrado que los controles de capital **no han tenido un efecto en el monto total de entrada de flujos** y por lo tanto no han tenido un impacto significativo en términos cambiarios, aunque han sido **efectivos en aumentar su madurez.** 
+
+## Indicador de Riesgo de Liquidez (IRL)
+
+* **Objetivos:** Limitar el riesgo de liquidez de fondeo. </p>
+
+* **Responsable:** SFC.
+
+* **Funcionamiento:** El IRL se define de la siguiente manera:  
+
+
+```{=tex}
+\begin{equation}
+IRL_R =  \frac{ALM}{RNL}
+\end{equation}
 ```
+
+Donde ALM es el valor de los activos liquidos ajustado por liquidez, calculados para cada horizonte de tiempo, y RNL corresponde al requerimiento neto de liquidez que tuvo la entidad en cada periodo. 
+
+Los activos liquidos corresponden a la suma del disponible y activos liquidos. Estos últimos se ajustan por un haircut de liquidez. Los activos en ME tienen un ajuste adicional por el riesgo cambiario que conllevan. 
+
+Los requerimientos netos de liquidez se calculan como la suma de los flujos de egreso contractuales y netos no contractuales, menos el 75% del minimo entre los ingresos contractuales y la suma anteriormente descrita. Esto se hace para que las entidades no puedan compensar la totalidad sus necesidades con ingreso contractual. 
+
+El IRL se calcula para horizontes de 7, 15, 30 y 90 dias. Si los indicadores calculados para los horizontes de 7 y 30 dias son menores al 100%, la SFC exige a la entidad un plan de acción con el objetivo de fortalecer su posición de liquidez. Los demás plazos se utilizan con fines de seguimiento y monitoreo. 
+
+* **Situación:** La introducción del SARL en 2009 generó una disminución del grado de sustitución que manejaban las entidades entre inversiones y cartera, ya que obligó a las entidades a mantener una cantidad considerable de inversiones liquidas permanentemente. Desde las modificaciones a la regulación (diciembre de 2011), ninguna de las entidades ha presentado un indicador por debajo del minimo regulatorio. 
+
+
+## Indicador de exposición individual y consolidado 
+
+* **Objetivos:** Mitigar riesgo de liquidez de corto plazo en ME, a nivel individual y consolidado. 
+
+* **Responsable:** La implementación es materia exclusiva del BR, aunque su control y aplicación del régimen sancionatorio es materia de la SFC.
+
+* **Funcionamiento:** El Indicador de Exposición Individual (IEI) es similar en sus componentes al IRL, y se define como la suma de los **excedentes netos por moneda** (i.e. la suma de aquells monedas para las que los activos liquidos exceden los requerimientos de liquidez), ajustados por un *haircut*, menos la suma del valor absoluto de las deficiencias netas por moneda. El indicador debe ser mayor a cero en los horizontes de 7 y 30 dias.  
+
+El Indicador de Exposición Consolidado (IEC) debe ser calculado solo por aquellas entidades obligadas a presentar balances consolidados a la SFC. La idea es que la *holding* tenga sufieciente liquidez (luego de aplicar los *haircuts* relevantes) para apoyar cualquier deficiencia de liquidez en una subsidiaria.  
+
+Por tanto, se calcula un IEI para cada pais en que opera una subsidiaria (y considerando las subsidirias en Colombia como una jurisdicción independiente). El IEC se define entonces com la suma del IEI de la *holding* y el IEI de aquellos paises que reportan deficiencias. El idicador se calcula para un horizonte de 30 dias y debe ser mayor a 0.
+
+* **Evaluación:** Este indicador se introdujo en Marzo de 2017, por lo que aún no hay suficiente información para una evaluación formal del mismo. 
+
+
+## Encajes marginales 
+
+* **Objetivos:** Acelerar la transmisión de la politica monetaria via tasas y de esa forma reducir el crecimiento del crédito y el apalancamiento de los agentes; i.e. encarecer la intermediación financiera. <
+
+* **Responsable:** La implementación es materia exclusiva del BR, aunque su control y aplicación del régimen sancionatorio es materia de la SFC. 
+
+* **Funcionamiento:** La última vez que se utilizaron fue entre mayo de 2007 y agosto de 2008. En dicho caso el encaje marginal alcanzó niveles del 27% para depósitos a la vista y de ahorro y del 5% para depósitos a término menores a 18 meses, sobre los excesos registrados tomando como referencia una fecha dada (mayo 7 de 2007). <
+
+
+## Provisiones dinámicas 
+
+* **Responsable:** SFC. 
+
+* **Objetivos:** Las provisiones dinámicas permiten reducir el impacto en el estado de resultados (P&G) cuando se presentan posibles cambios en el riesgo de crédito de los deudores en momentos en los cuales el deterioro de dichos activos se incrementa. En este sentido, en los periodos de mejora en la calidad crediticia se constituyen mayores provisiones de las que serian necesarias en tales condiciones, a fin de compensar, al menos en parte, las que deberian constituirse en periodos de deterioro en la calidad crediticia. 
+
+* **Funcionamiento:** Las provisiones individuales se pueden calcular con un modelo interno o con un modelo estándar provisto por el supervisor. 
+
+Cuando usan el segundo, todos los componentes de la Pérdida Esperada los provee la Superintendencia (i.e. Probabilidad de Default y la Pérdida Dado Incumplimiento).  
+
+En pocas palabras, la metodologia para el cálculo de la provisión individual es: Se estiman dos componentes: Componente Individual Prociclico (CIP) y un Componente Individual Contraciclico (CIC).
+Dependiendo de si la institución está en una fase "buena" o una "mala", las formulas para el cálculo dela provisión varian - para pasar de "buena" a "mala": 4 indicadores individuales de salud financiera activados por al menos 3 meses consecutivos. 
+En la fase "buena", se usa la metodologia de acumulación; en la "mala" se desacumula.
+La regulación permite que una entidad individual que esté enfrentando dificultades, independiente de las condiciones económicas generales, compense parte de su gasto en provisiones con el componente contraciclico.  Implica que el Supervisor no debe pronunciarse sobre la fase del ciclo económico.
+
+ 
+ 

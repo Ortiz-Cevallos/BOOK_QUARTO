@@ -1,6 +1,5 @@
 ---
-title: "Presentación"
-author: "[Luis Ortiz-Cevallos](https://ortiz-cevallos.github.io/MYSELF/)"
+title: "Políticas macro y micro prudenciales en la región"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 code_download: true

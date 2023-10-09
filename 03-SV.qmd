@@ -1,0 +1,116 @@
+---
+title: "El Salvador"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+code_download: true
+code_folding: hide
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: true
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+library(reticulate)
+```
+
+
+## Requerimiento de activos liquidos
+
+* **Antecedentes:** Regulado a través de las "Normas para el requerimiento de activos liquidos de los bancos" (NPB3-11), vigentes a partir de enero de 2005.
+
+* **Objetivos:** Mantener la estabilidad del sistema bancario, mejorando los mecanismos propios de respuesta de las entidades ante problemas temporales de liquidez. 
+
+* **Responsable:** 
+Regulación: Comité de Normas del Banco Central de Reserva (BCR).
+Supervisión: Superintendencia del Sistema Financiero (SSF). 
+
+
+* **Funcionamiento:** Mantener en todo momento una relación del tres por ciento del promedio de depósitos diarios del mes anterior en inversiones en títulos valores extranjeros de fácil realización, depósito a la vista en el BCR, Letras y Certificados del Tesoro de El Salvador y Certificados Negociables de Liquidez. 
+    
+* **Situación:** Las entidades han dado cumplimiento a la medida. 
+
+[Dirección Web Consulta](http://www.ssf.gob.sv/images/stories/desc_normas_prud_bancos/NPB3-11.pdf)
+
+
+## Limite a la exposición entre entidades
+
+* **Antecedentes:** Regulado en el articulo 197 de la Ley de Bancos y articulos 48 y 161 de la Ley de Bancos Cooperativos y Sociedades de Ahorro y Crédito. 
+Regulación complementaria desarrollada en las "Normas de Aplicación de los Limites en la Asunción de los Riesgos de los Bancos" (NPB4-36).
+
+* **Objetivos:** Establecer un limite a la exposición con personas o grupos económicos. 
+
+* **Responsable:** Supervisión: SSF.
+
+* **Funcionamiento:** Limite a la exposición en un solo deudor o grupo en relación con el fondo patrimonial. 
+
+* **Situación:** Las entidades mantienen bajas exposiciones a deudores o grupos. 
+
+* **Dirección Web Consulta:** http://www.ssf.gob.sv/descargas/Leyes/Leyes%20Financieras/Ley%20de%20Bancos.pdf
+
+ 1.   [Ley de bancos](http://www.ssf.gob.sv/descargas/Leyes/Leyes%20Financieras/Ley%20de%20Bancos.pdf)
+ 2.   [Ley de bancos cooperativos](http://www.ssf.gob.sv/descargas/Leyes/Leyes%20Financieras/Ley%20de%20Bancos%20Cooperativos%20y%20Sociedades%20de%20Ahorro%20y%20Credito.pdf)
+ 3.   [Normativa](http://www.ssf.gob.sv/images/stories/desc_normas_prud_bancos/NPB4-36.pdf)
+
+
+## Limite a la exposición entre entidades Limites a la exposición en moneda extranjera
+
+* **Antecedentes:** Regulado a través de las  "Normas sobre la relación entre las operaciones activas y pasivas en moneda extranjera de los bancos" (NPB3-07), vigentes a partir de enero de 2001. 
+
+* **Objetivos:** Establecer un limite al descalce entre activos y pasivos en moneda extranjera.
+
+* **Responsable:** Supervisión: SSF.
+
+* **Funcionamiento:** Limite de exposición de 10% del fondopatrimonial para el diferencial entre activos y pasivos en moneda extranjera. 
+
+* **Situación:** Las entidades mantienen bajas exposiciones en moneda extranjera. 
+
+[Dirección Web Consulta](http://www.ssf.gob.sv/images/stories/desc_normas_prud_bancos/Npb3-07.pdf)
+
+
+
+## Reducción de los requerimientos de reserva de liquidez por el otorgamiento de préstamos productivos
+
+* **Antecedentes:** Regulado a través de las "Medidas temporales para el Cálculo de la Reserva de Liquidez", vigentes a partir de febrero de 2015 por un periodo de cuatro años.
+
+* **Objetivos:** Incentivar el otorgamiento de préstamos productivos para impulsar el crecimiento económico y la generación de empleo. 
+
+* **Responsable:**
+Regulación: Comité de Normas del BCR.
+Supervisión: SSF. 
+
+* **Funcionamiento:** Reducción de los requerimientos de reserva de liquidez por el otorgamiento de préstamos a empresas de sectores productivos prioritarios para el desarrollo de una politica de fomento, diversificación y transformación productiva para El Salvador.
+
+* **Situación:** En 2015 el crecimiento promedio interanual del sector empresas fue de 1.5%; para 2017 alcanzó 7.3%. 
+
+[Dirección Web Consulta](http://www.ssf.gob.sv/images/stories/desc_normas_prud_bancos/Medidas_Temporales_RL.pdf)
+
+## Coeficiente de cobertura de liquidez (LCR) y Coeficiente de Financiamiento Estable Neto (CFEN)
+
+*  **Antecedentes:** Corresponde a un proyecto de modificación de las "Normas para la gestión del riesgo de liquidez" (NRP-05).
+
+* **Objetivos:** Incorporar estándares internacionales referentes a la gestión del riesgo de liquidez.  **Responsable:** 
+Regulación: Comité de Normas del BCR.
+Supervisión: SSF.
+
+* **Funcionamiento:** Las entidades deben contar con activos liquidos para enfrentar potenciales salidas netas de fondos en un escenario de estrés agudo de 30 dias y mantener un perfil de financiamiento estable para un horizonte de un año.
+
+* **Situación:** Proyecto en proceso de elaboración por parte de la Superintendencia del Sistema Financiero. 
+
+## Requerimiento de provisiones por incobrabilidad en base a pérdidas esperadas*
+
+* **Antecedentes:** Corresponde a un proyecto de modificación de las "Normas para clasificar los activos de riesgo crediticio y constituir las reservas de saneamiento" (NCB-022). 
+
+* **Objetivos:** Que las provisiones crediticias que las entidades determinan se apeguen a los riesgos crediticios asumidos.
+
+* **Responsable:** 
+Regulación: Comité de Normas del BCR.
+Supervisión: SSF.
+
+* **Funcionamiento:** Constitución de provisiones por incobrabilidad de préstamos por destino con base al modelo de pérdidas esperadas desarrollado por la Superintendencia del Sistema Financiero. 
+    
+* **Situación:** Proyecto remitido por la Superintendencia del Sistema Financiero al Comité de Normas del Banco Central de Reserva en 2017. 

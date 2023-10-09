@@ -2,14 +2,15 @@ project:
   type: book
   output-dir: docs
 book:
-  title: "MODELOS SEMI ESTRUCTURALES PARA EL CRÉDITO AL CONSUMO"
-  author: "[Luis Ortiz-Cevallos](https://ortiz-cevallos.github.io/MYSELF/)"
+  title: "Políticas macro y micro prudenciales en la región"
   favicon: Luis.png
   language: custom.yml
   downloads: [pdf, epub]
   chapters:
     - index.qmd
     - 01-conceptos.qmd
+    - 02-CR.qmd
+    - 03-SV.qmd
 format:
   html:
     theme: journal
